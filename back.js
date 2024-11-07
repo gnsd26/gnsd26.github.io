@@ -1,7 +1,11 @@
 function toggleVideo() {
     const video = document.getElementById("background-video");
     const checkbox = document.getElementById("videoToggle");
-    video.style.display = checkbox.checked ? "block" : "none";
+    if (checkbox.checked) {
+        video.classList.remove("hidden");
+    } else {
+        video.classList.add("hidden");
+    }
 }
 
 document.getElementById("videoToggle").checked = true;
@@ -35,3 +39,6 @@ volumeUp.addEventListener('click', function() {
     audio.volume = Math.min(1, audio.volume + 0.1);
     showVolumeInfo(audio.volume);
 });
+document.addEventListener('click', () => {
+    audio.play();
+}, { once: true });
